@@ -1,5 +1,5 @@
 import { Component } from 'react'
-import './Classe.css'
+import './Style/Classe.css'
 
 
 class Classes extends Component {

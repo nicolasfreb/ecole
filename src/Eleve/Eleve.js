@@ -11,13 +11,11 @@ class Eleve extends Component {
 
     constructor(props){
         super(props);
-
         this.ident = props.nom + props.prenom + props.age;
         this.nom = props.nom;
         this.prenom = props.prenom;
         this.age = props.age;
         this.classe = props.classe;
-        
     }
 
     render () {
