@@ -26,7 +26,7 @@ class Form extends Component {
                     
                                     <div className="form-group">
                                         <label>Age</label>
-                                        <input type="age" className="form-control" id="age"  placeholder="Entrer un age" />
+                                        <input type="number" className="form-control" id="age"  placeholder="Entrer un age" />
                                     </div>
                                     <div className="form-group">
                                         <label>Classe de l'élève</label>

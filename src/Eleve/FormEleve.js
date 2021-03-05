@@ -40,7 +40,7 @@ class FormEleve extends Component {static ident;
                 
                                 <div className="form-group">
                                     <label>Age</label>
-                                    <input type="age" className="form-control" id={"ageModif" + this.ident}  placeholder="Entrer un age" defaultValue={this.age}/>
+                                    <input type="number" className="form-control" id={"ageModif" + this.ident}  placeholder="Entrer un age" defaultValue={this.age}/>
                                 </div>
                                 <div className="form-group">
                                     <label>Classe de l'élève</label>
