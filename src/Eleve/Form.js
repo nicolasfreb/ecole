@@ -23,10 +23,17 @@ class Form extends Component {
                                         <label>Prenom</label>
                                         <input type="prenom" className="form-control" id="prenom" placeholder="Entrer un prénom" />
                                     </div>
-                    
                                     <div className="form-group">
-                                        <label>Age</label>
-                                        <input type="number" className="form-control" id="age"  placeholder="Entrer un age" />
+                                        <label>Date de naissance</label>
+                                        <input type="date" className="form-control" id="naissance"  placeholder="Entrer votre date de naissance" />
+                                    </div>
+                                    <div className="form-group">
+                                        <label>Numéro de téléphone</label>
+                                        <input type="telephone" className="form-control" id="telephone"  placeholder="Entrer votre numéro de téléphone" />
+                                    </div>
+                                    <div className="form-group">
+                                        <label>Adresse Email</label>
+                                        <input type="email" className="form-control" id="email"  placeholder="Entrer votre adresse email" />
                                     </div>
                                     <div className="form-group">
                                         <label>Classe de l'élève</label>
@@ -42,12 +49,14 @@ class Form extends Component {
                                 <button type="button" className="btn btn-primary" onClick={() => {
                                     var nom = document.getElementById('nom').value;
                                     var prenom = document.getElementById('prenom').value;
-                                    var age = document.getElementById('age').value;
+                                    var naissance = document.getElementById('naissance').value;
+                                    var telephone = document.getElementById('telephone').value;
+                                    var email = document.getElementById('email').value;
                                     var classe = document.getElementById('classe').value;
-                                    this.props.AddEleve(nom, prenom, age, classe);
+                                    this.props.AddEleve(nom, prenom, classe, naissance,telephone, email);
                                 }}
                                 > Ajouter un élève</button>
-                                <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="button" className="btn btn-secondary" data-dismiss="modal">Fermer</button>
                             </div>
                         </div>
                     </div>
@@ -73,7 +82,7 @@ class Form extends Component {
                                             this.props.AddClasse(nomClass);
                                         }}
                                         > Ajouter une classe</button>
-                                        <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button type="button" className="btn btn-secondary" data-dismiss="modal">Fermer</button>
                                     </div>
                                 </div>
                             </form>

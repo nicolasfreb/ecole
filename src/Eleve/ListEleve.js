@@ -31,7 +31,7 @@ class ListEleve extends Component {
                                 <tr>
                                     <td>Nom</td>
                                     <td>Prénom</td>
-                                    <td>Age</td>
+                                    <td>voir</td>
                                     <td>Modifier</td>
                                     <td>Supprimer</td>
                                 </tr>
@@ -48,7 +48,9 @@ class ListEleve extends Component {
                                             ident = {eleve.ident} 
                                             nom={eleve.nom} 
                                             prenom={eleve.prenom} 
-                                            age={eleve.age} 
+                                            telephone={eleve.telephone} 
+                                            naissance={eleve.naissance} 
+                                            email={eleve.email} 
                                             classe={eleve.classe} 
                                             state={this.props.state}
                                             removeEleve={this.props.removeEleve.bind(this)} 

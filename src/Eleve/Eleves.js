@@ -18,16 +18,16 @@ class Eleves extends Component {
     componentDidMount() {
         this.AddClasse("6ème A");
         this.AddClasse("6ème B");
-        this.AddEleve("Ramon", "Nicolas", 15, "6ème A");
-        this.AddEleve("Falbuc", "Jean", 14, "6ème A");
-        this.AddEleve("Trefont", "Lola", 14, "6ème A");
-        this.AddEleve("Morfar", "Marie", 15, "6ème A");
-        this.AddEleve("Lavoi", "Arnaud", 15, "6ème B");
+        this.AddEleve("Ramon", "Nicolas",  "6ème A", "1984-04-27", "0102030405", "toto@toto.com");
+        this.AddEleve("Falbuc", "Jean", "6ème A", "1984-04-27", "0102030405", "toto@toto.com");
+        this.AddEleve("Trefont", "Lola", "6ème A", "1984-04-27", "0102030405", "toto@toto.com");
+        this.AddEleve("Morfar", "Marie", "6ème A", "1984-04-27", "0102030405", "toto@toto.com");
+        this.AddEleve("Lavoi", "Arnaud", "6ème B", "1984-04-27", "0102030405", "toto@toto.com");
     }
 
-    AddEleve(nom, prenom, age, classe){
+    AddEleve(nom, prenom, classe, naissance,telephone, email){
         this.setState(prevState => ({
-            listEleve: [...prevState.listEleve, new Eleve({nom : nom, prenom : prenom, age : age, classe : classe})],
+            listEleve: [...prevState.listEleve, new Eleve({nom : nom, prenom : prenom,  classe : classe, naissance : naissance, telephone : telephone, email : email})],
         }));
         document.getElementById('formEleve').reset();
     }
@@ -39,14 +39,15 @@ class Eleves extends Component {
         document.getElementById('formClasse').reset();
     }
     removeEleve (i) {
+        console.log(i);
         this.setState({listEleve: this.state.listEleve.filter(function(eleve) {
             return eleve.ident !== i 
         })});
     }
     
-    modifEleve (nom, prenom, age, classe, ident) {
+    modifEleve (nom, prenom, classe, ident, naissance, telephone, email) {
         this.removeEleve (ident);
-        this.AddEleve(nom, prenom, age, classe);
+        this.AddEleve(nom, prenom, classe, naissance,telephone, email);
         document.getElementsByClassName("modal-backdrop")[0].remove(); 
     }
 
