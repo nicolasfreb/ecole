@@ -18,7 +18,7 @@ class Eleves extends Component {
     componentDidMount() {
         this.AddClasse("6ème A");
         this.AddClasse("6ème B");
-        this.AddEleve("Ramon", "Nicolas",  "6ème A", "1984-04-27", "0102030405", "toto@toto.com");
+        this.AddEleve("Ramon", "Nicolas", "6ème A", "1984-04-27", "0102030405", "toto@toto.com");
         this.AddEleve("Falbuc", "Jean", "6ème A", "1984-04-27", "0102030405", "toto@toto.com");
         this.AddEleve("Trefont", "Lola", "6ème A", "1984-04-27", "0102030405", "toto@toto.com");
         this.AddEleve("Morfar", "Marie", "6ème A", "1984-04-27", "0102030405", "toto@toto.com");
@@ -26,17 +26,21 @@ class Eleves extends Component {
     }
 
     AddEleve(nom, prenom, classe, naissance,telephone, email){
-        this.setState(prevState => ({
-            listEleve: [...prevState.listEleve, new Eleve({nom : nom, prenom : prenom,  classe : classe, naissance : naissance, telephone : telephone, email : email})],
-        }));
-        document.getElementById('formEleve').reset();
+        if(nom !== '' && prenom !== '' && classe !== '' && naissance !== '' && telephone !== '' && email !== ''){
+            this.setState(prevState => ({
+                listEleve: [...prevState.listEleve, new Eleve({nom : nom, prenom : prenom,  classe : classe, naissance : naissance, telephone : telephone, email : email })],
+            }));
+            document.getElementById('formEleve').reset();
+        }
     }
     
     AddClasse(nom){
-        this.setState(prevState => ({
-            listClass: [...prevState.listClass, new Classe({nom : nom})],
-        }));
-        document.getElementById('formClasse').reset();
+        if(nom !== ''){
+            this.setState(prevState => ({
+                listClass: [...prevState.listClass, new Classe({nom : nom})],
+            }));
+            document.getElementById('formClasse').reset();
+        }
     }
     removeEleve (i) {
         console.log(i);
@@ -46,9 +50,10 @@ class Eleves extends Component {
     }
     
     modifEleve (nom, prenom, classe, ident, naissance, telephone, email) {
-        this.removeEleve (ident);
-        this.AddEleve(nom, prenom, classe, naissance,telephone, email);
-        document.getElementsByClassName("modal-backdrop")[0].remove(); 
+        if(nom !== '' && prenom !== '' && classe !== '' && naissance !== '' && telephone !== '' && email !== '' && ident !== ''){
+            this.removeEleve (ident);
+            this.AddEleve(nom, prenom, classe, naissance,telephone, email);
+        }
     }
 
     render() {
@@ -62,7 +67,7 @@ class Eleves extends Component {
                         return(
                             <ListEleve 
                                 removeEleve={this.removeEleve.bind(this)} 
-                                modifEleve={this.modifEleve.bind(this)} 
+                                modifEleve={this.modifEleve.bind(this)}
                                 state={this.state}
                                 classe = {e.nom} 
                                 key= {key}
@@ -72,8 +77,9 @@ class Eleves extends Component {
                     })}
                     <Form 
                         state={this.state} 
-                        AddEleve={this.AddEleve.bind(this) }
-                        AddClasse =  {this.AddClasse.bind(this) } 
+                        AddEleve={this.AddEleve.bind(this)}
+                        AddClasse =  {this.AddClasse.bind(this)} 
+                        modifEleve = {this.modifEleve.bind(this)}
                     /> 
                 </div>   
             </div>

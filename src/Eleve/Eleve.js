@@ -10,7 +10,6 @@ class Eleve extends Component {
     static telephone;
     static email;
     static classe;
-    static rand;
 
     constructor(props){
         super(props);
@@ -20,7 +19,7 @@ class Eleve extends Component {
         this.telephone = props.telephone;
         this.email = props.email;
         this.classe = props.classe;
-        this.ident = props.nom + props.prenom ;
+        this.ident =  props.nom + props.prenom  ;
     }
     
     

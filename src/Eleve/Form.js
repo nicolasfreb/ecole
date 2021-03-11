@@ -17,7 +17,7 @@ class Form extends Component {
                                 <div className="modal-body">
                                     <div className="form-group">
                                         <label>Nom</label>
-                                        <input type="nom" className="form-control" id="nom" placeholder="Entrer un nom" />
+                                        <input type="nom" className="form-control" id="nom" placeholder="Entrer un nom"/>
                                     </div>
                                     <div className="form-group">
                                         <label>Prenom</label>

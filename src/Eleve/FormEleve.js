@@ -20,7 +20,6 @@ class FormEleve extends Component {
         this.email = props.email;
         this.age = props.age;
         this.classe = props.classe;
-
         
     }
     render() {
@@ -35,27 +34,27 @@ class FormEleve extends Component {
                                 <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
-                            <form id="formEleveModif">
+                            <form id="formEleveModif" noValidate>
                                 <div className="modal-body">
                                     <div className="form-group">
                                         <label>Nom</label>
-                                        <input type="nom" className="form-control" id={"nomModif" + this.ident} placeholder="Entrer un nom" defaultValue={this.nom}/>
+                                        <input type="nom" className="form-control" id={"nomModif" + this.ident} placeholder="Entrer un nom" defaultValue={this.nom} required/>
                                     </div>
                                     <div className="form-group">
                                         <label>Prenom</label>
-                                        <input type="prenom" className="form-control" id={"prenomModif" + this.ident} placeholder="Entrer un prénom" defaultValue={this.prenom}/>
+                                        <input type="prenom" className="form-control" id={"prenomModif" + this.ident} placeholder="Entrer un prénom" defaultValue={this.prenom} required/>
                                     </div>
                                     <div className="form-group">
                                             <label>Date de naissance</label>
-                                            <input type="date" className="form-control" id={"naissanceModif" + this.ident}  placeholder="Entrer votre date de naissance" defaultValue={this.naissance}/>
+                                            <input type="date" className="form-control" id={"naissanceModif" + this.ident}  placeholder="Entrer votre date de naissance" defaultValue={this.naissance} required/>
                                         </div>
                                         <div className="form-group">
                                             <label>Numéro de téléphone</label>
-                                            <input type="telephone" className="form-control" id={"telephoneModif" + this.ident}  placeholder="Entrer votre numéro de téléphone" defaultValue={this.telephone}/>
+                                            <input type="telephone" className="form-control" id={"telephoneModif" + this.ident}  placeholder="Entrer votre numéro de téléphone" defaultValue={this.telephone} required/>
                                         </div>
                                         <div className="form-group">
                                             <label>Adresse Email</label>
-                                            <input type="email" className="form-control" id={"emailModif" + this.ident}  placeholder="Entrer votre adresse email" defaultValue={this.email}/>
+                                            <input type="email" className="form-control" id={"emailModif" + this.ident}  placeholder="Entrer votre adresse email" defaultValue={this.email} required/>
                                         </div>
                                     <div className="form-group">
                                         <label>Classe de l'élève</label>
@@ -68,7 +67,7 @@ class FormEleve extends Component {
                                 </div>
                             </form>
                             <div className="modal-footer">
-                                <button type="button" className="btn btn-primary" onClick={() => {
+                                <button type="button" className="btn btn-primary" data-dismiss="modal" onClick={() => {
                                     var nom = document.getElementById('nomModif' + this.ident).value;
                                     var prenom = document.getElementById('prenomModif' + this.ident).value;
                                     var naissance = document.getElementById('naissanceModif' + this.ident).value;
