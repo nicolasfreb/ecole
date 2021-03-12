@@ -4,12 +4,10 @@ import Eleve from './Eleve';
 import Form from './Form';
 import ListEleve from './ListEleve';
 import Classe from './Classe';
-import nextId from "react-id-generator";
-import { setPrefix } from "react-id-generator";
+import nextId, {setPrefix} from "react-id-generator";
  
 setPrefix("");
   
-
 class Eleves extends Component {
     constructor (props) {
         super(props);
@@ -31,6 +29,7 @@ class Eleves extends Component {
 
     closeAllModals() {
         document.getElementById("FormAjoutEleve").click();
+        document.getElementById("FormAjoutClass").click();
         if (typeof document.getElementsByClassName("modal-backdrop")[0] !== 'undefined') document.getElementsByClassName("modal-backdrop")[0].remove()
     }
 
@@ -40,6 +39,7 @@ class Eleves extends Component {
                 listClass: [...prevState.listClass, new Classe({nom : nom})],
             }));
             document.getElementById('formClasse').reset();
+            this.closeAllModals();
         }
     }
 
@@ -50,10 +50,8 @@ class Eleves extends Component {
                 listEleve : [...prevState.listEleve, new Eleve({nom : nom, prenom : prenom,  classe : classe, naissance : naissance, telephone : telephone, email : email, ident : ident})],
             }));
             */
-
-
-           var listEleve = this.state.listEleve;
-           listEleve[ident] = new Eleve({nom : nom, prenom : prenom,  classe : classe, naissance : naissance, telephone : telephone, email : email, ident : ident});
+            var listEleve = this.state.listEleve;
+            listEleve[ident] = new Eleve({nom : nom, prenom : prenom,  classe : classe, naissance : naissance, telephone : telephone, email : email, ident : ident});
             this.setState({listEleve : listEleve});
             document.getElementById('formEleve').reset();
             this.closeAllModals();
