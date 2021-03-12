@@ -4,6 +4,10 @@ import Eleve from './Eleve';
 import Form from './Form';
 import ListEleve from './ListEleve';
 import Classe from './Classe';
+import nextId from "react-id-generator";
+import { setPrefix } from "react-id-generator";
+ 
+setPrefix("");
   
 
 class Eleves extends Component {
@@ -24,15 +28,6 @@ class Eleves extends Component {
         this.AddEleve("Morfar", "Marie", "6ème A", "1984-04-27", "0102030405", "toto@toto.com");
         this.AddEleve("Lavoi", "Arnaud", "6ème B", "1984-04-27", "0102030405", "toto@toto.com");
     }
-
-    AddEleve(nom, prenom, classe, naissance,telephone, email){
-        if(nom !== '' && prenom !== '' && classe !== '' && naissance !== '' && telephone !== '' && email !== ''){
-            this.setState(prevState => ({
-                listEleve: [...prevState.listEleve, new Eleve({nom : nom, prenom : prenom,  classe : classe, naissance : naissance, telephone : telephone, email : email })],
-            }));
-            document.getElementById('formEleve').reset();
-        }
-    }
     
     AddClasse(nom){
         if(nom !== ''){
@@ -42,17 +37,41 @@ class Eleves extends Component {
             document.getElementById('formClasse').reset();
         }
     }
-    removeEleve (i) {
-        console.log(i);
+
+    AddEleve(nom, prenom, classe, naissance,telephone, email, ident= nextId()){
+        if(nom !== '' && prenom !== '' && classe !== '' && naissance !== '' && telephone !== '' && email !== ''){
+            /*
+            this.setState(prevState => ({
+                listEleve : [...prevState.listEleve, new Eleve({nom : nom, prenom : prenom,  classe : classe, naissance : naissance, telephone : telephone, email : email, ident : ident})],
+            }));
+            */
+
+
+           var listEleve = this.state.listEleve;
+           listEleve[ident] = new Eleve({nom : nom, prenom : prenom,  classe : classe, naissance : naissance, telephone : telephone, email : email, ident : ident});
+            this.setState({listEleve : listEleve});
+            document.getElementById('formEleve').reset();
+        }
+    }
+
+    async removeEleve (ident) {
+        /*
         this.setState({listEleve: this.state.listEleve.filter(function(eleve) {
-            return eleve.ident !== i 
+            return eleve.ident !== ident 
         })});
+        */
+        var listEleve = this.state.listEleve;
+        delete listEleve[ident];
+        this.setState({listEleve : listEleve});
+        return await Promise.resolve();
+
     }
     
     modifEleve (nom, prenom, classe, ident, naissance, telephone, email) {
         if(nom !== '' && prenom !== '' && classe !== '' && naissance !== '' && telephone !== '' && email !== '' && ident !== ''){
-            this.removeEleve (ident);
-            this.AddEleve(nom, prenom, classe, naissance,telephone, email);
+            this.removeEleve (ident).then(() => {
+                this.AddEleve(nom, prenom, classe, naissance,telephone, email, ident);
+            });
         }
     }
 

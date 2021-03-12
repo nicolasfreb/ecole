@@ -29,7 +29,7 @@ class Form extends Component {
                                     </div>
                                     <div className="form-group">
                                         <label>Numéro de téléphone</label>
-                                        <input type="telephone" className="form-control" id="telephone"  placeholder="Entrer votre numéro de téléphone" />
+                                        <input type="tel" className="form-control" id="telephone"  placeholder="Entrer votre numéro de téléphone" />
                                     </div>
                                     <div className="form-group">
                                         <label>Adresse Email</label>

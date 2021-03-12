@@ -10,6 +10,7 @@ class Eleve extends Component {
     static telephone;
     static email;
     static classe;
+    static html;
 
     constructor(props){
         super(props);
@@ -19,15 +20,12 @@ class Eleve extends Component {
         this.telephone = props.telephone;
         this.email = props.email;
         this.classe = props.classe;
-        this.ident =  props.nom + props.prenom  ;
+        this.ident =  props.ident ;
     }
-    
-    
-
-    render () {
-        return(
-            <tr key={this.ident}>
-                <td>{this.nom}</td>
+    genereHtml(){
+        var html = 
+            <tr key=  {this.ident}>
+                <td id={"nom" + this.ident} >{this.nom}</td>
                 <td>{this.prenom}</td>
                 <td>
                     <button 
@@ -64,8 +62,12 @@ class Eleve extends Component {
                         modifEleve={this.props.modifEleve.bind(this)}
                     />
                 </td>
-            </tr>
-        );
+            </tr>;
+        this.html = html;
+        return (html);
+    }
+    render (html) {
+        return this.genereHtml();
       }
 }
 export default Eleve

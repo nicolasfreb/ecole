@@ -22,6 +22,10 @@ class FormEleve extends Component {
         this.classe = props.classe;
         
     }
+    getDate(date){
+        const detail = date.split('-');
+        return detail[2] + '/' + detail[1] + '/' + detail[0];
+    }
     render() {
         return (
             <div>
@@ -50,7 +54,7 @@ class FormEleve extends Component {
                                         </div>
                                         <div className="form-group">
                                             <label>Numéro de téléphone</label>
-                                            <input type="telephone" className="form-control" id={"telephoneModif" + this.ident}  placeholder="Entrer votre numéro de téléphone" defaultValue={this.telephone} required/>
+                                            <input type="tel"  className="form-control" id={"telephoneModif" + this.ident}  placeholder="Entrer votre numéro de téléphone" defaultValue={this.telephone} required/>
                                         </div>
                                         <div className="form-group">
                                             <label>Adresse Email</label>
@@ -89,10 +93,10 @@ class FormEleve extends Component {
                                 <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
-                                <h5 className="card-title">{this.nom} {this.prenom}</h5>
-                                <p className="card-text">Date de naissance : {this.naissance}</p>
-                                <p className="card-text">Numéro de téléphone : {this.telephone}</p>
-                                <p className="card-text">Adresse email : {this.email}</p>
+                                <h5 className="card-title"><b>{this.nom} {this.prenom}</b></h5>
+                                <p className="card-text">Date de naissance : <b>{this.getDate(this.naissance)}</b></p>
+                                <p className="card-text">Numéro de téléphone : <b>{this.telephone}</b></p>
+                                <p className="card-text">Adresse email : <a href={"mailto: " + this.email}><b>{this.email}</b></a></p>
                                 <button type="button" className="btn btn-secondary" data-dismiss="modal">Fermer</button>
                             </div>
                         </div>
