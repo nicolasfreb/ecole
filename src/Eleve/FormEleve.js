@@ -71,7 +71,7 @@ class FormEleve extends Component {
                                 </div>
                             </form>
                             <div className="modal-footer">
-                                <button type="button" className="btn btn-primary" data-dismiss="modal" onClick={() => {
+                                <button type="button" className="btn btn-primary" onClick={() => {
                                     var nom = document.getElementById('nomModif' + this.ident).value;
                                     var prenom = document.getElementById('prenomModif' + this.ident).value;
                                     var naissance = document.getElementById('naissanceModif' + this.ident).value;

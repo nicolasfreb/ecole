@@ -28,7 +28,12 @@ class Eleves extends Component {
         this.AddEleve("Morfar", "Marie", "6ème A", "1984-04-27", "0102030405", "toto@toto.com");
         this.AddEleve("Lavoi", "Arnaud", "6ème B", "1984-04-27", "0102030405", "toto@toto.com");
     }
-    
+
+    closeAllModals() {
+        document.getElementById("FormAjoutEleve").click();
+        if (typeof document.getElementsByClassName("modal-backdrop")[0] !== 'undefined') document.getElementsByClassName("modal-backdrop")[0].remove()
+    }
+
     AddClasse(nom){
         if(nom !== ''){
             this.setState(prevState => ({
@@ -51,8 +56,10 @@ class Eleves extends Component {
            listEleve[ident] = new Eleve({nom : nom, prenom : prenom,  classe : classe, naissance : naissance, telephone : telephone, email : email, ident : ident});
             this.setState({listEleve : listEleve});
             document.getElementById('formEleve').reset();
+            this.closeAllModals();
         }
     }
+    
 
     async removeEleve (ident) {
         /*

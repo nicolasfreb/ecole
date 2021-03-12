@@ -82,7 +82,7 @@ class Form extends Component {
                                             this.props.AddClasse(nomClass);
                                         }}
                                         > Ajouter une classe</button>
-                                        <button type="button" className="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                                        <button type="button" className="btn btn-secondary" data-dismiss="modal" id="fermerForm">Fermer</button>
                                     </div>
                                 </div>
                             </form>
